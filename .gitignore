@@ -1,1 +1,5 @@
 .env
+ccneg_images/
+*jpg
+*png
+*pt

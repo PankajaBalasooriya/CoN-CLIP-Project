@@ -7,7 +7,7 @@ This repository contains a reimplementation of the WACV 2025 paper:
 _Jaisidh Singh, Ishaan Shrivastava, Mayank Vatsa, Richa Singh, Aparna Bharati_
 
 📄 [Paper Link](https://openaccess.thecvf.com/content/WACV2025/html/Singh_Learning_the_Power_of_No_Foundation_Models_with_Negations_WACV_2025_paper.html)
-
+https://arxiv.org/html/2403.20312v1
 ---
 <!--
 ## 🚀 Overview
