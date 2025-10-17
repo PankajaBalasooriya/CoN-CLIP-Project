@@ -50,7 +50,7 @@ def main(args):
 
         correct += (preds == labels).sum().item()
         total += sim.size(0)
-        bar.set_postfix({"accuracy": round(correct/total * 100, 2)})
+        bar.set_postfix({"accuracy": round(correct/total * 100, 3)})
         bar.update(1)
 
     print(f"Final CC-Neg accuracy: {correct/total*100:.2f}%")
