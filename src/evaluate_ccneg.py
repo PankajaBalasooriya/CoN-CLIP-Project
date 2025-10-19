@@ -20,6 +20,7 @@ def main(args):
         model.load_state_dict(ckpt["model"])
         model = model.to(device)
 
+
     ds = CCNegEvalDataset(transform=preprocess)  # looks in ccneg_dataset/ by default
     loader = DataLoader(
         ds, batch_size=args.batch, pin_memory=(device=="cuda"),
