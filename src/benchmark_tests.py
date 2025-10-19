@@ -270,15 +270,23 @@ def load_stanford_cars(root, preprocess, batch_size=256):
 
 
 def load_oxford_pets(root, preprocess, batch_size=256):
-    """Load Oxford-IIIT Pets."""
+    """Load Oxford-IIIT Pets with class names directly from the dataset."""
     dataset = datasets.OxfordIIITPet(
         root=root,
         split='test',
         transform=preprocess,
         download=True
     )
-    loader = DataLoader(dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True)
-    return loader, OXFORD_PETS_CLASSES
+    
+    loader = DataLoader(
+        dataset, batch_size=batch_size, shuffle=False, num_workers=4, pin_memory=True
+    )
+
+    # ✅ Automatically retrieve the correct class names (37 breeds)
+    classnames = dataset.classes
+
+    return loader, classnames
+
 
 
 def load_cifar10(root, preprocess, batch_size=256):
@@ -361,33 +369,79 @@ def compute_text_features(model, classnames, device, template="a photo of a {}."
 
 # ==================== Main Evaluation ====================
 
+# def load_model(model_name, checkpoint_path=None, device="cuda"):
+#     """Load CLIP or CoN-CLIP model."""
+
+#     model, preprocess = clip.load(model_name, device=device)
+#     # Extract actual CLIP model name (the part after the first hyphen)
+
+
+    
+#     if checkpoint_path is not None:
+#         print(f"Loading checkpoint from {checkpoint_path}")
+#         ckpt = torch.load(checkpoint_path, map_location=device)
+#         model = model.float()
+#         model.load_state_dict(ckpt["model"])
+    
+#     model = model.to(device)
+#     model.eval()
+    
+#     return model, preprocess
+
+
 def load_model(model_name, checkpoint_path=None, device="cuda"):
     """Load CLIP or CoN-CLIP model."""
 
-    model, preprocess = clip.load(model_name, device=device)
-    # Extract actual CLIP model name (the part after the first hyphen)
+    # Extract actual CLIP model name (remove prefixes)
+    if model_name.startswith("CLIP-"):
+        clip_name = model_name.replace("CLIP-", "")
+    elif model_name.startswith("CoN-CLIP-"):
+        clip_name = model_name.replace("CoN-CLIP-", "")
+    else:
+        clip_name = model_name
 
+    print(f"Loading CLIP base model: {clip_name}")
 
-    
+    model, preprocess = clip.load(clip_name, device=device)
+
+    # Load CoN-CLIP checkpoint if provided
     if checkpoint_path is not None:
         print(f"Loading checkpoint from {checkpoint_path}")
-        ckpt = torch.load(checkpoint_path, map_location=device)
+        ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
+        print("Done Loading Checkpoint")
         model = model.float()
-        model.load_state_dict(ckpt["model"])
+        ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
+        print("Checkpoint type:", type(ckpt))
+        if isinstance(ckpt, dict):
+            print("Checkpoint keys:", ckpt.keys())
+        else:
+            print("Not a dict — raw object loaded.")
+
+        if "model" in ckpt:
+            print("Loading state dict from 'model' key in checkpoint")
+            model.load_state_dict(ckpt["model"])
+        else:
+            print("Loading state dict directly from checkpoint")
+            model.load_state_dict(ckpt)
     
+
     model = model.to(device)
     model.eval()
-    
     return model, preprocess
 
-
+# model, preprocess = clip.load(args.model, device=device) 
+# if args.ckpt: 
+#     ckpt = torch.load(args.ckpt, map_location=device, weights_only=False)
+#     model = model.float()
+#     model.load_state_dict(ckpt["model"])
+#     model = model.to(device)
 
 def evaluate_all_datasets(model, preprocess, data_root, device="cuda"):
     """Evaluate model on all datasets."""
     results = {}
     
-    datasets_config = {"CIFAR-100": (load_cifar100, os.path.join(data_root, "cifar100")),
-        
+    datasets_config = {"Caltech-101": (load_caltech101, os.path.join(data_root, "caltech101")), 
+                        "CIFAR-10": (load_cifar10, os.path.join(data_root, "cifar10")),
     }
     # datasets_config = {
     #     "Caltech-101": (load_caltech101, os.path.join(data_root, "caltech101")), 
@@ -500,18 +554,18 @@ if __name__ == "__main__":
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
     
     # Models to evaluate
-    # models_config = {
-    #     "CLIP-ViT-B/32": None,
-    #     "CoN-CLIP-ViT-B/32": "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/logs/conclip_b32/results_conclip_b32.pt",
-    #     "CLIP-ViT-B/16": None,
-    #     "CoN-CLIP-ViT-B/16": "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/logs/conclip_b16/results_conclip_b16.pt",
-    #     "CLIP-ViT-L/14": None
-    # }
-
     models_config = {
-        "ViT-B/32": None,
-        "ViT-B/16": None,
+        "CLIP-ViT-B/32": None,
+        "CoN-CLIP-ViT-B/32": "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_b32/ckpt_5_conclip_b32.pt",
+        "CLIP-ViT-B/16": None,
+        "CoN-CLIP-ViT-B/16": "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_b16/ckpt_5_conclip_b16.pt",
+        "CLIP-ViT-L/14": None
     }
+
+    # models_config = {
+    #     "ViT-B/32": None,
+    #     "ViT-B/16": None,
+    # }
     
     # Run evaluation
     results = run_comparison(models_config, DATA_ROOT, DEVICE)

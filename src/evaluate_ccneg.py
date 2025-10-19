@@ -14,6 +14,7 @@ def collate_fn(batch):
 def main(args):
     device = args.device
     model, preprocess = clip.load(args.model, device=device)
+    
     if args.ckpt:
         ckpt = torch.load(args.ckpt, map_location=device, weights_only=False)
         model = model.float()

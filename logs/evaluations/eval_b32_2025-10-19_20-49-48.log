@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_ccneg.py", line 75, in <module>
+    main(args)
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_ccneg.py", line 18, in main
+    ckpt = torch.load(args.ckpt, map_location=device, weights_only=False)
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/serialization.py", line 1484, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/serialization.py", line 759, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/serialization.py", line 740, in __init__
+    super().__init__(open(name, mode))
+FileNotFoundError: [Errno 2] No such file or directory: ''

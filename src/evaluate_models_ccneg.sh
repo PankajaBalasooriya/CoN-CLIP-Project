@@ -50,17 +50,17 @@ case $family_choice in
       1)
         model="ViT-B/32"
         experiment_name="conclip_b32"
-        ckpt_path="$base_dir/logs/conclip_b32/results_conclip_b32.pt"
+        ckpt_path="/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_b32/ckpt_5_conclip_b32.pt"
         ;;
       2)
         model="ViT-B/16"
         experiment_name="conclip_b16"
-        ckpt_path="$base_dir/logs/conclip_b16/results_conclip_b16.pt"
+        ckpt_path="/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_b16/ckpt_5_conclip_b16.pt"
         ;;
       3)
         model="ViT-L/14"
         experiment_name="conclip_l14"
-        ckpt_path="$base_dir/logs/conclip_l14/results_conclip_l14.pt"
+        ckpt_path="/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_l14/ckpt_5_conclip_l14.pt"
         ;;
       *)
         echo "Invalid choice. Exiting."

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_ccneg.py", line 68, in <module>
+    main(args)
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_ccneg.py", line 21, in main
+    model.load_state_dict(ckpt["model"])
+KeyError: 'model'

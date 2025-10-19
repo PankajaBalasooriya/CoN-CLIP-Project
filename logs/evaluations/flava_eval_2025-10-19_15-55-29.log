@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_ccneg.py", line 67, in <module>
+    main(args)
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 120, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_ccneg.py", line 16, in main
+    model, preprocess = clip.load(args.model, device=device)
+  File "/home/pankaja/cv/lib/python3.10/site-packages/clip/clip.py", line 124, in load
+    raise RuntimeError(f"Model {name} not found; available models = {available_models()}")
+RuntimeError: Model flava not found; available models = ['RN50', 'RN101', 'RN50x4', 'RN50x16', 'RN50x64', 'ViT-B/32', 'ViT-B/16', 'ViT-L/14', 'ViT-L/14@336px']
