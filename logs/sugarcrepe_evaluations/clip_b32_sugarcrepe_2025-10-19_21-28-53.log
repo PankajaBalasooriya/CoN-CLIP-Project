@@ -1,0 +1,96 @@
+
+############################################################
+Evaluating: ViT-B/32
+############################################################
+Loading CLIP base model: ViT-B/32
+
+============================================================
+Evaluating: Replace Object
+============================================================
+Loaded 1652 samples for replace_obj
+Evaluating:   0%|          | 0/52 [00:00<?, ?it/s]                                                  Error evaluating replace_obj: Caught KeyError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_sugarcrepe.py", line 48, in __getitem__
+    anno = self.annotations[idx]
+KeyError: 0
+
+
+============================================================
+Evaluating: Replace Attribute
+============================================================
+Loaded 788 samples for replace_att
+Evaluating:   0%|          | 0/25 [00:00<?, ?it/s]                                                  Error evaluating replace_att: Caught KeyError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_sugarcrepe.py", line 48, in __getitem__
+    anno = self.annotations[idx]
+KeyError: 0
+
+
+============================================================
+Evaluating: Replace Relation
+============================================================
+Loaded 1406 samples for replace_rel
+Evaluating:   0%|          | 0/44 [00:00<?, ?it/s]                                                  Error evaluating replace_rel: Caught KeyError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_sugarcrepe.py", line 48, in __getitem__
+    anno = self.annotations[idx]
+KeyError: 0
+
+
+============================================================
+Evaluating: Add Object
+============================================================
+Loaded 2062 samples for add_obj
+Evaluating:   0%|          | 0/65 [00:00<?, ?it/s]                                                  Error evaluating add_obj: Caught KeyError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_sugarcrepe.py", line 48, in __getitem__
+    anno = self.annotations[idx]
+KeyError: 0
+
+
+============================================================
+Evaluating: Add Attribute
+============================================================
+Loaded 692 samples for add_att
+Evaluating:   0%|          | 0/22 [00:00<?, ?it/s]                                                  Error evaluating add_att: Caught KeyError in DataLoader worker process 0.
+Original Traceback (most recent call last):
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/worker.py", line 349, in _worker_loop
+    data = fetcher.fetch(index)  # type: ignore[possibly-undefined]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/cv/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 52, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/src/evaluate_sugarcrepe.py", line 48, in __getitem__
+    anno = self.annotations[idx]
+KeyError: 0
+
+
+============================================================
+Evaluating: Swap Object
+============================================================
+Loaded 245 samples for swap_obj
+Evaluating:   0%|          | 0/8 [00:00<?, ?it/s]                                                 
