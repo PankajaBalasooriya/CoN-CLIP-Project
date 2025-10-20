@@ -224,11 +224,6 @@ def load_model(model_name, checkpoint_path=None, device="cuda"):
         print("Done Loading Checkpoint")
         model = model.float()
         ckpt = torch.load(checkpoint_path, map_location=device, weights_only=False)
-        print("Checkpoint type:", type(ckpt))
-        # if isinstance(ckpt, dict):
-        #     print("Checkpoint keys:", ckpt.keys())
-        # else:
-        #     print("Not a dict — raw object loaded.")
 
         if "model" in ckpt:
             print("Loading state dict from 'model' key in checkpoint")
@@ -253,15 +248,6 @@ def evaluate_all_datasets(model, preprocess, data_root, device="cuda"):
                         "CIFAR-100": (load_cifar100, os.path.join(data_root, "cifar100")),
                         "Oxford Pets": (load_oxford_pets, os.path.join(data_root, "oxford_pets")),
     }
-    # datasets_config = {
-    #     "Caltech-101": (load_caltech101, os.path.join(data_root, "caltech101")), 
-    #     "Flowers-102": (load_flowers102, os.path.join(data_root, "flowers102")),
-    #     "CIFAR-100": (load_cifar100, os.path.join(data_root, "cifar100")),
-    #     "Food-101": (load_food101, os.path.join(data_root, "food101")),
-    #     "Stanford Cars": (load_stanford_cars, os.path.join(data_root, "stanford_cars")),
-    #     "Oxford Pets": (load_oxford_pets, os.path.join(data_root, "oxford_pets")),
-    #     "CIFAR-10": (load_cifar10, os.path.join(data_root, "cifar10")),
-    # }
     
     for dataset_name, (load_fn, dataset_path) in datasets_config.items():
         print(f"\n{'='*60}")
