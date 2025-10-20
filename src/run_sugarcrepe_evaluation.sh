@@ -10,7 +10,7 @@ mkdir -p "$log_dir"
 
 # Checkpoint paths
 conclip_b32_ckpt="/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_b32/ckpt_5_conclip_b32.pt"
-conclip_b16_ckpt="/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_b32/ckpt_5_conclip_b32.pt"
+conclip_b16_ckpt="/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_b16/ckpt_5_conclip_b16.pt"
 conclip_l14_ckpt="/home/pankaja/ENTC/Sem5/CoN-CLIP-Project/checkpoints/conclip_l14/ckpt_5_conclip_l14.pt"
 
 echo "============================================"
@@ -23,9 +23,7 @@ echo "2) Full comparison (CLIP vs CoN-CLIP)"
 read -p "Enter your choice [1-2]: " mode_choice
 
 case $mode_choice in
-  # ==============================
-  # 1️⃣ SINGLE MODEL EVALUATION
-  # ==============================
+  # SINGLE MODEL EVALUATION
   1)
     echo ""
     echo "Select model to evaluate:"
@@ -109,13 +107,13 @@ case $mode_choice in
       --output "$output_file" 2>&1 | tee "$log_file"
 
     echo ""
-    echo "✅ Evaluation complete!"
-    echo "📁 Log saved: $log_file"
-    echo "📁 Results saved: $output_file"
+    echo "Evaluation complete!"
+    echo "Log saved: $log_file"
+    echo "Results saved: $output_file"
     ;;
 
   # ==============================
-  # 2️⃣ FULL COMPARISON
+  # FULL COMPARISON
   # ==============================
   2)
     timestamp=$(date +"%Y-%m-%d_%H-%M-%S")
@@ -159,9 +157,9 @@ case $mode_choice in
       --output "$output_file" 2>&1 | tee "$log_file"
 
     echo ""
-    echo "✅ Full comparison complete!"
-    echo "📁 Log saved: $log_file"
-    echo "📁 Results saved: $output_file"
+    echo "Full comparison complete!"
+    echo "Log saved: $log_file"
+    echo "Results saved: $output_file"
     ;;
 
   *)
