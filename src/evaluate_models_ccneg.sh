@@ -15,7 +15,7 @@ read -p "Enter your choice [1-4]: " family_choice
 
 case $family_choice in
   # ==============================
-  # 1️⃣ CLIP FAMILY
+  # CLIP FAMILY
   # ==============================
   1)
     echo "Select the CLIP model architecture:"
@@ -37,7 +37,7 @@ case $family_choice in
     ;;
 
   # ==============================
-  # 2️⃣ CoN-CLIP FAMILY
+  # CoN-CLIP FAMILY
   # ==============================
   2)
     echo "Select the CoN-CLIP model architecture:"
@@ -79,7 +79,7 @@ case $family_choice in
     ;;
 
   # ==============================
-  # 3️⃣ FLAVA MODEL
+  # FLAVA MODEL
   # ==============================
   3)
     model="flava"
@@ -90,7 +90,7 @@ case $family_choice in
     ;;
 
   # ==============================
-  # 4️⃣ BLIP MODEL
+  # BLIP MODEL
   # ==============================
   4)
     model="blip"
@@ -126,6 +126,6 @@ echo "Running: python3 $eval_script $eval_args"
 eval python3 $eval_script $eval_args 2>&1 | tee "$log_file"
 
 echo "----------------------------------------"
-echo "✅ Evaluation complete for $model"
-echo "📁 Results saved in: $log_file"
+echo "Evaluation complete for $model"
+echo "Results saved in: $log_file"
 echo "----------------------------------------"
