@@ -155,7 +155,7 @@ def plot_radar_chart(results, architecture='ViT-B/32'):
     ax.set_xticklabels(datasets, fontsize=11)
     
     # Set y-axis limits
-    ax.set_ylim(0, 100)
+    ax.set_ylim(50, 100)
     
     # Add title and legend
     ax.set_title(f'Top-1 accuracy using {architecture} on {num_vars} datasets', 
@@ -170,7 +170,6 @@ def plot_radar_chart(results, architecture='ViT-B/32'):
     plt.show()
     
     return fig
-
 
 
 def generate_both_plots(results):
@@ -191,52 +190,6 @@ def generate_both_plots(results):
 # Usage: Manually add your results here
 if __name__ == "__main__":
     # Manual results dictionary - ADD YOUR VALUES HERE
-    # results = {
-    #     "CLIP-ViT-L/14": {
-    #         "Caltech-101": 0.0,  # Add your accuracy here
-    #         "CIFAR-10": 0.0,
-    #         "Flowers-102": 0.0,
-    #         "CIFAR-100": 0.0,
-    #         "Oxford Pets": 0.0
-    #     },
-    #     "CoN-CLIP-ViT-L/14": {
-    #         "Caltech-101": 0.0,  # Add your accuracy here
-    #         "CIFAR-10": 0.0,
-    #         "Flowers-102": 0.0,
-    #         "CIFAR-100": 0.0,
-    #         "Oxford Pets": 0.0
-    #     },
-    #     "CLIP-ViT-B/32": {
-    #         "Caltech-101": 0.0,
-    #         "CIFAR-10": 0.0,
-    #         "Flowers-102": 0.0,
-    #         "CIFAR-100": 0.0,
-    #         "Oxford Pets": 0.0
-    #     },
-    #     "CoN-CLIP-ViT-B/32": {
-    #         "Caltech-101": 0.0,
-    #         "CIFAR-10": 0.0,
-    #         "Flowers-102": 0.0,
-    #         "CIFAR-100": 0.0,
-    #         "Oxford Pets": 0.0
-    #     },
-    #     "CLIP-ViT-B/16": {
-    #         "Caltech-101": 0.0,
-    #         "CIFAR-10": 0.0,
-    #         "Flowers-102": 0.0,
-    #         "CIFAR-100": 0.0,
-    #         "Oxford Pets": 0.0
-    #     },
-    #     "CoN-CLIP-ViT-B/16": {
-    #         "Caltech-101": 0.0,
-    #         "CIFAR-10": 0.0,
-    #         "Flowers-102": 0.0,
-    #         "CIFAR-100": 0.0,
-    #         "Oxford Pets": 0.0
-    #     }
-    # }
-
-
     results = {
     "CLIP-ViT-B/32": {
         "Caltech-101": 85.63,
